@@ -4,10 +4,10 @@ const bcrypt = require('bcryptjs/dist/bcrypt');
 
 
 // Register
-
 const register = async (req, res) => {
     
     try{
+        // Get value
         const {first_name, last_name, email, password} = req.body
 
         // Validate input

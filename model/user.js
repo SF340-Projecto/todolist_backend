@@ -1,5 +1,6 @@
 const mongoose =  require('mongoose');
 
+// Model user 
 const userSchema = new mongoose.Schema({
     first_name: { type: String, default: null},
     last_name: { type: String, default: null},
