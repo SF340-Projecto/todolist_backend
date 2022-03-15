@@ -5,18 +5,73 @@ const { default: mongoose } = require('mongoose');
 // create task
 const createTask = async (req, res) => {
 
-    const {text, _id} = req.body
+    // get value from body
+    const {date, priority, taskDetail, taskDate, textTime, timestamp, topic, urlPhoto,  _id} = req.body
     const users = await User.findOne({_id});
 
+    //create data on mongodb
     const todo =  await Todo.create({
-        text,
-        done: false,
-        user: new mongoose.Types.ObjectId(users._id)
+        id_user: new mongoose.Types.ObjectId(users._id),
+        date,
+        priority,
+        taskDetail,
+        taskDate,
+        textTime,
+        timestamp,
+        topic,
+        urlPhoto,
     }) 
     
+    //send data back
     res.json(todo);
     
 }
 
+// create task
+const updateTask = async (req, res) => {
 
-module.exports = {createTask};
+    const {date, priority, taskDetail, taskDate, textTime, timestamp, topic, urlPhoto,  _id} = req.body
+
+    //update task by using task id
+    const updateUserTask = await Todo.updateOne({'_id': _id}, {"$set": {
+        date: date,
+        priority: priority,
+        taskDetail : taskDetail,
+        taskDate : taskDate,
+        textTime : textTime,
+        timestamp : timestamp,
+        topic : topic,
+        urlPhoto : urlPhoto,
+      }});
+      
+      //send data back
+      res.status(200).send(updateUserTask)
+
+}
+
+const getTodosByUId = async (req, res) => {
+
+    // get user id 
+    const id = req.params.id
+
+    // find user id in db
+    const getAllTask = await Todo.find({id_user : id });
+
+    // send back data
+    res.status(200).send(getAllTask)
+}
+
+const deleteTask = async (req, res) => {
+
+    // get user id 
+    const id = req.params.id
+
+    // find user id in db
+    const getAllTask = await Todo.deleteOne({_id : id });
+
+    // send back data
+    res.status(200).send({data: getAllTask, word:"success"})
+}
+
+
+module.exports = {createTask, getTodosByUId, updateTask, deleteTask};
