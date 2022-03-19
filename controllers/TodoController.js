@@ -30,7 +30,8 @@ const createTask = async (req, res) => {
 // create task
 const updateTask = async (req, res) => {
 
-    const {date, priority, taskDetail, taskDate, textTime, timestamp, topic, urlPhoto,  _id} = req.body
+    const {_id, date, priority, taskDetail, taskDate, textTime, timestamp, topic, urlPhoto} = req.body
+    console.log(date, priority, taskDetail, taskDate, textTime, timestamp, topic, urlPhoto,  _id)
 
     //update task by using task id
     const updateUserTask = await Todo.updateOne({'_id': _id}, {"$set": {
