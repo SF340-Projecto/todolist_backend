@@ -6,9 +6,8 @@ const { default: mongoose } = require('mongoose');
 const createTask = async (req, res) => {
 
     // get value from body
-    const {date, priority, taskDetail, taskDate, textTime, timestamp, topic, urlPhoto,  _id} = req.body
+    const {_id, date, priority, taskDetail, taskDate, textTime, timestamp, topic, urlPhoto} = req.body
     const users = await User.findOne({_id});
-
     //create data on mongodb
     const todo =  await Todo.create({
         id_user: new mongoose.Types.ObjectId(users._id),
@@ -20,6 +19,7 @@ const createTask = async (req, res) => {
         timestamp,
         topic,
         urlPhoto,
+        achive: false
     }) 
     
     //send data back
@@ -30,8 +30,7 @@ const createTask = async (req, res) => {
 // create task
 const updateTask = async (req, res) => {
 
-    const {_id, date, priority, taskDetail, taskDate, textTime, timestamp, topic, urlPhoto} = req.body
-    console.log(date, priority, taskDetail, taskDate, textTime, timestamp, topic, urlPhoto,  _id)
+    const {_id, date, priority, taskDetail, taskDate, timestamp, topic, urlPhoto, achive} = req.body
 
     //update task by using task id
     const updateUserTask = await Todo.updateOne({'_id': _id}, {"$set": {
@@ -39,10 +38,10 @@ const updateTask = async (req, res) => {
         priority: priority,
         taskDetail : taskDetail,
         taskDate : taskDate,
-        textTime : textTime,
         timestamp : timestamp,
         topic : topic,
         urlPhoto : urlPhoto,
+        achive : achive
       }});
       
       //send data back

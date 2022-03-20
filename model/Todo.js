@@ -11,6 +11,7 @@ const TodoSchema = new mongoose.Schema({
     timestamp:{type: String, required: false},
     topic:{type: String, required: true},
     urlPhoto:{type: String, required: false},
+    achive:{type:Boolean, require: true}
 })
 
 module.exports = mongoose.model('Todo', TodoSchema)
