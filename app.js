@@ -5,6 +5,7 @@ const todo = require('./routes/todo')
 const express = require('express')
 const auth = require('./middleware/auth');
 const authUser = require('./routes/auth')
+const CategoryRoutes = require('./routes/Category')
 var bodyParser = require('body-parser');
 
 const app = express()
@@ -14,6 +15,8 @@ app.use(express.json())
 app.use('/auths', authUser);
 
 app.use('/todos', todo)
+
+app.use('/categories', CategoryRoutes)
 
 app.post('/welcome', auth, (req, res) =>{
     res.status(200).send("Welcome")

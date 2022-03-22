@@ -1,12 +1,12 @@
-const mongoose =  require('mongoose');
-
-// Model user 
+const mongoose = require("mongoose");
+const CategoriesSchema = require("./Categories").schema;
+// Model user
 const userSchema = new mongoose.Schema({
-    first_name: { type: String, default: null},
-    last_name: { type: String, default: null},
-    email: { type: String, unique: true},
-    password: { type: String},
-    token: { type: String},
-})
-
-module.exports = mongoose.model('user', userSchema)
+  first_name: { type: String, default: null },
+  last_name: { type: String, default: null },
+  email: { type: String, unique: true },
+  password: { type: String },
+  token: { type: String },
+  Categories:{type: [CategoriesSchema], default: []},
+});
+module.exports = mongoose.model("user", userSchema);
