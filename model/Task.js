@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const CategoryDetails = new mongoose.Schema({
+const CategoryTasks = new mongoose.Schema({
     topic: String,
     // date:{type: String, required: false},
     // priority:{type: String, required: false},
@@ -13,11 +13,4 @@ const CategoryDetails = new mongoose.Schema({
     
 })
 
-const CategoriesSchema = new mongoose.Schema({
-    name: String,
-    user_id: {type: mongoose.SchemaTypes.ObjectId},
-    details: {type: [CategoryDetails], default: []}
-    
-})
-module.exports = mongoose.model("Category", CategoriesSchema);
-
+module.exports = mongoose.model("CategoryTask", CategoryTasks);
