@@ -1,22 +1,10 @@
 const mongoose = require('mongoose')
-
-const CategoryDetails = new mongoose.Schema({
-    topic: String,
-    // date:{type: String, required: false},
-    // priority:{type: String, required: false},
-    // taskDetail:{type: String, required: true},
-    // taskDate:{type: String, required: false},
-    // textTime:{type: String, required: false},
-    // timestamp:{type: String, required: false},
-    // topic:{type: String, required: true},
-    // urlPhoto:{type: String, required: false},
-    
-})
+const CategoryTasks = require('./Task').schema
 
 const CategoriesSchema = new mongoose.Schema({
     name: String,
     user_id: {type: mongoose.SchemaTypes.ObjectId},
-    details: {type: [CategoryDetails], default: []}
+    task_lists: {type: [CategoryTasks], default: []}
     
 })
 module.exports = mongoose.model("Category", CategoriesSchema);
