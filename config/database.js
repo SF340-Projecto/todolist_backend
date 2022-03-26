@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const {MONGO_URI} = process.env
+const MONGO_URI = "mongodb+srv://t1:1234567890@cluster0.q5pxa.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 // Connect to mongodb
 exports.connect = () => {

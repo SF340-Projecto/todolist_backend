@@ -2,7 +2,7 @@ const User = require('../model/user')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs/dist/bcrypt');
 
-
+const TOKEN_KEY = "qwertyuipo"
 // Register
 const register = async (req, res) => {
     
@@ -67,7 +67,7 @@ const login = async (req, res) => {
 
             const token = jwt.sign(
                 {user_id: user._id, email},
-                process.env.TOKEN_KEY,
+                TOKEN_KEY,
                 {
                     expiresIn: '2h',
                 }
