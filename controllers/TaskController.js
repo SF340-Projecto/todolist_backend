@@ -65,7 +65,9 @@ const deleteTask = async (req, res) => {
   });
   if (category) {
     await category.task_lists.id(req.params.id).remove();
+    category.save();
     res.send(category);
+    console.log(category)
   } else {
     res.status(400).send({
       success: false,
