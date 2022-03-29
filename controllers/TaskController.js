@@ -4,8 +4,8 @@ const mongoose = require("mongoose");
 const addTask = async (req, res) => {
   //Find category that belong to user and category name
   const category = await Categories.findOne({
-    user_id: req.params.id,
-    _id: req.params._id,
+    user_id: req.body.user_id,
+    _id: req.body.categorie_id,
   });
 
   if (category) {
