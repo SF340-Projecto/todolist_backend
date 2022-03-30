@@ -87,4 +87,9 @@ const login = async (req, res) => {
 
 }
 
-module.exports = {login, register};
+const getUser = async (req, res) => {
+    const user = await User.findById({_id: req.params.id})
+    res.send(user)
+}
+ 
+module.exports = {login, register, getUser};
