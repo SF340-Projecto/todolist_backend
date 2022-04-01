@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 const CategoryTasks = new mongoose.Schema({
+     
      date:{type: String, required: false},
      priority:{type: String, required: false},
      taskDetail:{type: String, required: true},
@@ -9,9 +10,9 @@ const CategoryTasks = new mongoose.Schema({
      timestamp:{type: String, required: false},
      topic:{type: String, required: true},
      urlPhoto:{type: String, required: false},
+     noti_id:{type: String, required: false},
      achive:{type: Boolean, required: false},
 
-    
 })
 
 module.exports = mongoose.model("CategoryTask", CategoryTasks);
