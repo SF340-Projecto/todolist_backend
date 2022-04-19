@@ -4,7 +4,7 @@ var controller = require('../controllers/CategoryController');
 
 router.get('/:id', controller.getAllCategory )
 router.post('/', controller.AddCategory )
-router.put('/', controller.update )
+router.put('/', controller.updateCategory )
 router.delete('/:id', controller.deleteCategory )
 // router.post('/addTask/:id/:name', controller.addTask )
 

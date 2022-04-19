@@ -15,17 +15,18 @@ const AddCategory = async (req, res) => {
   }
 };
 
-const update = async (req, res) => {
-  const updateCategory = await Categories.updateOne(
-    { _id: req.body._id },
+const updateCategory = async (req, res) => {
+  var updateCategory = await Categories.updateOne({_id: req.body._id },
     {
-      $set: {
+      '$set': {
         name: req.body.name,
       },
     }
   );
 
-  res.send(updateCategory);
+  var cate = await Categories.findOne({_id: req.body._id})
+  console.log("Cate", cate)
+  res.status(200).send(cate);
 };
 
 const deleteCategory = async (req, res) => {
@@ -40,4 +41,4 @@ const getAllCategory = async (req, res) => {
   res.send(getAllCategory);
 };
 
-module.exports = { AddCategory, update, deleteCategory, getAllCategory };
+module.exports = { AddCategory, updateCategory, deleteCategory, getAllCategory };
