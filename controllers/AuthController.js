@@ -9,6 +9,7 @@ const register = async (req, res) => {
     try{
         // Get value
         const {first_name, last_name, email, password} = req.body
+        console.log(first_name, last_name, email, password)
 
         // Validate input
         if (!(email && password && first_name && last_name)) {
@@ -37,7 +38,7 @@ const register = async (req, res) => {
         //Token Create
         const token = jwt.sign(
             {user_id: user._id, email},
-            process.env.TOKEN_KEY,
+            TOKEN_KEY,
             {
                 expiresIn : '2h'
             }
@@ -49,7 +50,7 @@ const register = async (req, res) => {
 
     } 
     catch {
-        console.log(err)
+        console.log("Error")
     }
 }
 
