@@ -25,7 +25,6 @@ const updateCategory = async (req, res) => {
   );
 
   var cate = await Categories.findOne({_id: req.body._id})
-  console.log("Cate", cate)
   res.status(200).send(cate);
 };
 
